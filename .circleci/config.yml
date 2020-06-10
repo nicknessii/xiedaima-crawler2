@@ -1,3 +1,4 @@
+#circleci相关配置，告诉ci当前项目如何进行测试
 version: 2
 jobs:
   test:
@@ -7,9 +8,6 @@ jobs:
       - checkout
       - restore_cache:
           key: hcsp-{{ checksum "pom.xml" }}
-      - run:
-          name: Verify whitelist
-          command: ./.circleci/verifyWhitelist.sh
       - run:
           name: Run Maven verify
           command: mvn clean verify
